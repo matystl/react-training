@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://fb.me/react-0.13.3.js"></script>
+<head>
+<body>
+  <div id="content">
+  </div>
+  <script>
+    var MyFirstComponent = React.createClass({
+      render: function() {
+        return (
+          React.createElement('div', {className: "commentBox"}, [
+            "Hello, world! I am a text inside div.",
+          ])
+        );
+      }
+    });
+    React.render(
+       React.createElement(MyFirstComponent, null),
+       document.getElementById('content')
+     );
+  </script>
+</body>
+</html>
