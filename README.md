@@ -3,8 +3,9 @@
 ### Moj repozitar s nejakymi prikladmi
 https://github.com/matystl/react-training
 
-### Babel 
+### Babel ES6 ES2015
 https://babeljs.io/
+http://projects.formidablelabs.com/es6-interactive-guide/#/
 
 ### React
 https://babeljs.iore
