@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "core-decorators": "^0.2.0",
+    "immutable": "^3.7.4",
     "react": "^0.13.3",
     "react-router": "^0.13.3",
     "redux": "^0.12.0"
