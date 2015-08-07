@@ -27,7 +27,7 @@ export class DumpApp extends Component {
   render() {
       return (
         <div className="ahoj">
-          This is app
+          This is app1
           <Link to="domov">Counter link</Link>
           <Link to="about" >About link</Link>
           <RouteHandler />

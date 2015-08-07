@@ -4,14 +4,13 @@ import {Card} from './Card';
 
 export class Board extends Component {
   render() {
-    console.log
     return (
       <Col>
         {this.props.game.map((row) =>
           <Row>
             {row.map((item) =>
-              <Card turned={this.props.turned.has(item.id)}
-                    done={this.props.done.has(item.id)}
+              <Card turned={this.props.turned.indexOf(item.id) !== -1}
+                    done={this.props.done.indexOf(item.id) !== -1}
                     item={item}
                     onClick={() => this.props.turnCard(item)}/>
             )}

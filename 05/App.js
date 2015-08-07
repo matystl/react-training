@@ -7,31 +7,29 @@ export class App extends Component {
 
   state = {
     game : null,
-    done: new Set(),
-    turned: new Set(),
+    done: [],
+    turned: [],
   };
 
   startNewGame() {
     const picutres = range(0, 8);
     this.setState({
-      done: new Set(),
-      turned: new Set(),
+      done: [],
+      turned: [],
       game: createNewGame(picutres),
     });
   }
 
   turnCard(item) {
-    console.log("turn item", item.id);
-    console.log(this.state);
     let {turned, done} = this.state;
-    if (turned.has(item.id)) return;
-    if (turned.size == 2) {
+    if (turned.indexOf(item.id) !== -1) return;
+    if (turned.length == 2) {
       if (isCardsSame(turned)) {
-        turned.forEach((i) => done.add(i));
+        done = [...done, ...turned];
       }
-      turned.clear();
+      turned = [];
     }
-    turned.add(item.id);
+    turned.push(item.id);
     this.setState({turned, done});
   }
 

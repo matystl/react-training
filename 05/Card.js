@@ -3,14 +3,14 @@ import React, {Component} from 'react';
 export class Card extends Component {
   render() {
     let color = "red";
-    let text = `Turn me - ${this.props.item.picture}`;
+    let text = `Turn me`;//`${this.props.item.picture}`;
     let handler = this.props.onClick;
     if (this.props.done) {
       color = "yellow";
       text = `Done - ${this.props.item.picture}`;
       handler = () => null;
     } else if (this.props.turned) {
-      color = "green";
+      color = "lime";
       text = `${this.props.item.picture}`;
     }
     return (
