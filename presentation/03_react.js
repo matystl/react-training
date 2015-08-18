@@ -5,8 +5,10 @@
 
 // Declarative programing
 
-// In computer science, declarative programming is a programming paradigm,
-// a style of building the structure and elements of computer programs,
+// In computer science, declarative programming is
+// a programming paradigm,
+// a style of building the structure and elements
+// of computer programs,
 // that expresses the logic of a computation
 // without describing its control flow.
 
@@ -75,20 +77,20 @@ const template2 = <h1>Other text</h1>;
 
 
 // let do something with statefull
-const input1 = (
+let input1 = (
   <div>
-    <input />
+    <input key="name"/>
     first
   </div>
 );
-const input2 = (
+let input2 = (
   <div>
-    <input />
+    <input key="name" />
     second
   </div>
 );
-// React.render(input1, targetElement);
-// setTimeout(() => React.render(input2, targetElement), 2000);
+ //React.render(input1, targetElement);
+ //setTimeout(() => React.render(input2, targetElement), 2000);
 
 
 // REUSABLE COMPONENTS
@@ -100,7 +102,7 @@ const input2 = (
 
 // would be nice if we can define our components
 `
-<Modal open=false dismisable=true>
+<Modal open=true dismisable=true>
   //content
 </Modal>
 `;
@@ -108,13 +110,14 @@ const input2 = (
 // 1. we can specify properties
 // 2. we can specify what is inside components
 
-// Simplest custom component in react just render something
+// Simplest custom component in react just
+// render something
 class SimpleComponent extends React.Component {
   render() {
     return <div>Some text inside component</div>;
   }
 }
-
+//React.render(<SimpleComponent />, targetElement);
 
 
 class SimpleComponentWithProps extends React.Component {
@@ -124,10 +127,10 @@ class SimpleComponentWithProps extends React.Component {
   }
 }
 // React.render(
-<SimpleComponentWithProps text="anything">
+<SimpleComponentWithProps text="anything1">
   <div>What will happend with child?</div>
 </SimpleComponentWithProps>
-// , targetElement);
+//, targetElement);
 
 
 class SimpleComponentWithChildren extends React.Component {
@@ -152,16 +155,25 @@ class SimpleComponentWithChildren extends React.Component {
 class SimpleComponentWithState extends React.Component {
 
   state = {
-    counter: 0
+    counter: 0,
+    test: 15,
   }
 
-  increaseCounter = () => this.setState({counter: this.state.counter + 1});
+  increaseCounter = () => {
+    // dont user this.state.counter = this.state.counter + 1
+    this.setState({
+      counter: this.state.counter + 1,
+      test: 47,
+    });
+  }
 
   render() {
     return (
       <div>
         {this.state.counter}
-        <button onClick={this.increaseCounter}>increase</button>
+        <button onClick={this.increaseCounter}>
+          increase
+        </button>
       </div>
     );
   }
@@ -177,7 +189,10 @@ class ReadingValuseFromDom extends React.Component {
     text: "default text"
   }
   onTextChange = (e) => {
-    this.setState({text: e.target.value});
+    console.log(e);
+    this.setState({
+      text: e.target.value
+    });
   }
   render() {
     return (
@@ -188,6 +203,9 @@ class ReadingValuseFromDom extends React.Component {
         <button onClick={() => alert(this.state.text)}>
           show
         </button>
+        <span>
+          {this.state.text}
+        </span>
       </div>
     );
   }
@@ -197,8 +215,9 @@ class ReadingValuseFromDom extends React.Component {
 // , targetElement);
 
 
-
+// detailed description http://busypeoples.github.io/post/react-component-lifecycle/
 class LifecycleComponent extends React.Component {
+
 
   // First render
   componentWillMount(){}

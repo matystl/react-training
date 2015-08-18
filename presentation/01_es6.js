@@ -4,7 +4,7 @@
 // ES6(ES2015) June 17, 2015;
 
 
-
+// Babel - transpailer
 
 
 
@@ -28,6 +28,7 @@ undefined
 
 // Variables
 
+// never use var
 let a = 4;
 const b = 7;
 a = 15;
@@ -42,6 +43,7 @@ function name(argument) {
 }
 // anonymous function with implicit return
 (argument) => "returned result";
+
 () => {
   return "result";
 };
@@ -78,13 +80,13 @@ let a = (condition)? true_expresion : false_expresion;
 while(contion) {
   //body
 }
-for(const i = 0; i < 15; i++) {
+for(let i = 0; i < 15; i++) {
   //body
 }
 
 // loop over Arrays
 var a = [1, 2, 3];
-for(const i = 0; i < a.length; i++) {
+for(let i = 0; i < a.length; i++) {
   console.log(i);
 }
 // expresion looping
@@ -116,10 +118,10 @@ let [first, ...rest] = a;
 let {key: renamedVariable} = {key: 15};
 
 // destructuring work in function arguments
-function drawSquare({x1, y1}, {x2, y2}) {
-  //use variables x1, x2
+function drawSquare({x: x1, y: y1}, {x: x2, y: y2}) {
+  //use variables x1, x2, y1, y2
 }
-
+drawSquare({x: 4, y: 3}, {x: 15, y: 15})
 
 
 // Other usage of ... operator
@@ -130,6 +132,8 @@ function write(first, second, third) {
 let a = [1, 2, 3];
 //write(a); now first will be array and other will be undefined
 write(...a);
+// you can also use it with combination of other values
+write(12, 13, ...a);
 
 //coping to other strucutres
 let a = [1, 2, 3];
@@ -144,7 +148,8 @@ let c = {key1: 47, ...a, ...b}; // what will be val under key1?
 // Modules
 
 // every file is module
-// nothing from file is implicitly available in another module
+// nothing from file is implicitly available
+// in another module
 const privateVar = 5;
 // keyword for exposing is export
 export const exportedVariable = 7;
@@ -194,12 +199,16 @@ class Name {
 // for beginers use ES7 propery inicializer and lambdas
 class Name {
   state = 15
-  myFunction = () => {
-    this.state; // this is avalible
+  myFunction() {
+    console.log(this.state); // this is avalible
   }
 }
+let a = new Name().myFunction;
+a(); //this will not work
 
-// intermediate users ask me after how to use this
+// intermediate users ask me after how to use `this`
+
+
 
 
 // Now you know how to code in javascript ES2015
