@@ -61,7 +61,7 @@ function incCounter() {
   }
 }
 
-// Middlaware
+// Middleware
 
 // Functions that modify actions before they land to store
 // let's skip them for now
@@ -69,13 +69,13 @@ function incCounter() {
 // The store
 
 // entity responsible for storing all data
-// not responsible for modifying state but moderate modifiaction
-// responsibe for notification about state changes
+// not responsible for modifying state but moderate modification
+// responsible for notification about state changes
 
 import { createStore  } from 'redux';
 
 const simpleStore = createStore(counterReducer);
-// let put this instance to window so we can use it from console
+// Let's put this instance to window so we can use it from console
 window.store = simpleStore;
 
 
@@ -119,9 +119,9 @@ simpleStore.dispatch(incCounter());
 
 // View
 
-// at beginning redux was designed for react
-// but up to now we don't use anything react specific
-// so any view library that can live with getState and dispatch
+// Redux was initially designed to simplify React development
+// but above examples have not displayed anything React specific.
+// Any view library that can live with getState and dispatch
 // can work with Redux
 
 // React bindings are in package
@@ -129,7 +129,7 @@ simpleStore.dispatch(incCounter());
 
 
 
-// This file is btw fully runnable with help of heatpack
+// This file is fully runnable with help of heatpack
 // https://github.com/insin/react-heatpack
 // So first small demo how to render something
 import React from 'react';
@@ -137,7 +137,7 @@ import React from 'react';
 const appDiv = document.querySelector('#app');
 React.render(<div>Simple text</div>, appDiv);
 
-// Lets create simple component
+// Let's create simple component
 // that will get counter and dispatch in props
 
 class App extends React.Component {
@@ -168,7 +168,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 // after we have this 2 function we can use them
-// to create smart component from our dump component
+// to create smart component from our dumb component
 // by "connecting" it to redux
 
 import { connect } from 'react-redux';
@@ -182,8 +182,8 @@ let AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);
 //}
 
 
-// As you notice we didn't specify how to get to store instance
-// as this would be repetitive redux put store instance to react contex
+// Notice we didn't specify how to get to store instance.
+// Redux put store instances to react contex
 // that way whole render tree will share same instace of store
 import { Provider } from 'react-redux';
 
