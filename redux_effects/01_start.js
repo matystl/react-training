@@ -1,6 +1,6 @@
 // Redux with side effects
 // @matystl
-
+// https://github.com/matystl/react-training/tree/master/redux_effects
 
 
 
@@ -14,7 +14,13 @@
 // http://rackt.github.io/redux/
 
 
+
+
+
 // Picture of original flux
+
+
+
 
 // Redux overview
 //
@@ -23,7 +29,7 @@
 //    -------------            ----------- <------------   ------------
 //         ^                        |        new state
 //         | action |               |
-//         | anything for           | new state
+//         | something for          | new state
 //         | middleware            \/
 //    ----------------           ------------
 //    |action creator| <-------- |   view   |
@@ -75,7 +81,7 @@ window.store = simpleStore;
 // Reducers
 
 // responsible for modification of state
-// somehting like store in flux but only for modification
+// something like store in flux but only for modification
 // simple function that take state and action and return new state
 
 function counterReducer(state, action) {
@@ -89,12 +95,12 @@ function counterReducer(state, action) {
 
 // Let's now return to store
 
-// we can simply get data from store
+// we can simply get data from store with getState
 console.log('State at begging:', simpleStore.getState());
 
 
 
-// if we want to modify state we must disptach action
+// if we want to modify state we must dispatch action
 simpleStore.dispatch(incCounter());
 console.log('State at after dispatch:', simpleStore.getState());
 
@@ -117,9 +123,14 @@ simpleStore.dispatch(incCounter());
 // so any view library that can live with getState and dispatch
 // can work with Redux
 
-// react bindings are in package
+// React bindings are in package
 // https://github.com/rackt/react-redux
 
+
+
+// This file is btw fully runnable with help of heatpack
+// https://github.com/insin/react-heatpack
+// So first small demo how to render something
 import React from 'react';
 
 const appDiv = document.querySelector('#app');
@@ -132,7 +143,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        App component
+        App component <br />
         value: {this.props.counter}
         <button onClick={() => this.props.dispach(incCounter())}>inc</button>
       </div>
@@ -163,8 +174,8 @@ import { connect } from 'react-redux';
 
 let AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);
 
-// if you want to use decorators from es7
-// @connect(mapStateToProps)
+// if you want, you can use decorators from es7
+// @connect(mapStateToProps, mapDispatchToProps)
 // export class App extends React.Component {
 // ...
 //}
