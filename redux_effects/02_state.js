@@ -157,6 +157,32 @@ let resultReducer = combineReducers({
 })
 `)
 
+// Times when you need to combine them is when you would need
+// waitFor in original flux.
+
+// Another example where you want to do
+// it manualy is if you need to read state from another reducer.
+(`
+function reducerA(state, action) {}
+function reducerB(stateFromReducerA, myState, action) {}
+
+function combinnedReducer(state, action) {
+  if (! state) {
+    let resultA = reducerA(undefined, action);
+    let resultB = reducerB(resultA, undefined, action);
+    return {
+      reducerA: resultA,
+      reducerB: resultB,
+    }
+  }
+  let resultA = reducerA(state.reducerA, action);
+  let resultB = reducerB(resultA, state.reducerB, action);
+  return {
+    reducerA: resultA,
+    reducerB: resultB,
+  }
+}
+`)
 
 
 
