@@ -39,7 +39,7 @@ class Counter extends React.Component {
 // create smart component
 @connect(
   (state) => ({counter: state}),
-  (dispach) => ({inc: () => dispach(inc())})
+  (dispatch) => ({inc: () => dispatch(inc())})
 ) //from dump component
 class App extends React.Component {
   render() {
@@ -80,7 +80,7 @@ class TwoCounterApp extends React.Component {
   }
 }
 
-renderNewReducer(dumptwoCounters, TwoCounterApp);
+//renderNewReducer(dumptwoCounters, TwoCounterApp);
 
 
 
@@ -114,7 +114,7 @@ function smartTwoCounters(state, action) {
   }
 }
 
-// and for binding dispach to action creators we can use bindActionCreators
+// and for binding dispatch to action creators we can use bindActionCreators
 import { bindActionCreators } from 'redux';
 
 @connect(
@@ -135,7 +135,7 @@ class SmartTwoCounterApp extends React.Component {
   }
 }
 
-renderNewReducer(smartTwoCounters ,SmartTwoCounterApp);
+//renderNewReducer(smartTwoCounters ,SmartTwoCounterApp);
 
 
 

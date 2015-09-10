@@ -1,4 +1,5 @@
 // Redux with side effects
+
 // @matystl
 // https://github.com/matystl/react-training/tree/master/redux_effects
 
@@ -10,7 +11,7 @@
 // What is Redux
 
 // Redux is a predictable state container for JavaScript apps.
-// Evolution of flux with emphasis on simple constructs
+// Evolution of flux with emphasis on simple constructs.
 // http://rackt.github.io/redux/
 
 
@@ -137,7 +138,7 @@ const appDiv = document.querySelector('#app');
 React.render(<div>Simple text</div>, appDiv);
 
 // Lets create simple component
-// that will get counter and dispach in props
+// that will get counter and dispatch in props
 
 class App extends React.Component {
   render() {
@@ -145,7 +146,7 @@ class App extends React.Component {
       <div>
         App component <br />
         value: {this.props.counter}
-        <button onClick={() => this.props.dispach(incCounter())}>inc</button>
+        <button onClick={() => this.props.dispatch(incCounter())}>inc</button>
       </div>
     );
   }
@@ -159,10 +160,10 @@ function mapStateToProps(state) {
   };
 }
 
-// and how we want to map dispach to props
+// and how we want to map dispatch to props
 function mapDispatchToProps(dispatch) {
   return {
-    dispach: dispatch
+    dispatch: dispatch
   };
 }
 
@@ -186,11 +187,11 @@ let AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);
 // that way whole render tree will share same instace of store
 import { Provider } from 'react-redux';
 
-React.render(
-  <Provider store={simpleStore}>
-    {() => <AppWithRedux />}
-  </Provider>,
-  appDiv
-);
+// React.render(
+//   <Provider store={simpleStore}>
+//     {() => <AppWithRedux />}
+//   </Provider>,
+//   appDiv
+// );
 // note: children of provider is function and it's temporary hack
 // until react 0.14 will be released
