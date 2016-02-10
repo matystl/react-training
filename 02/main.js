@@ -1,9 +1,14 @@
 import React from 'react';
-import Router from 'react-router';
+import {render} from 'react-dom';
+import { Router, hashHistory } from 'react-router'
+
 import {routes} from './routes';
 
-const appElement = document.querySelector('#app');
+const appElement = document.getElementById('app');;
 
-Router.run(routes, Router.HistoryLocation, (Handler) => {
-  React.render(<Handler />, appElement);
-});
+render(
+  <Router history={hashHistory}>
+    {routes}
+  </Router>,
+  appElement
+);
