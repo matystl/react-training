@@ -40,7 +40,7 @@
 
 
 // Notification example
-
+// notification.png
 
 
 
@@ -58,7 +58,7 @@
 
 
 // Declarative rendering on server
-
+// server.png
 
 
 
@@ -66,17 +66,22 @@
 // Example of declarative rendering in react
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-const template = <div>Some text</div>;
+const template = <div>Some initial text</div>;
 const targetElement = document.querySelector('#app');
 
-//React.render(template, targetElement);
+//ReactDOM.render(template, targetElement);
+const render = (what) => ReactDOM.render(what, targetElement);
+//now only render(template);
+render(template);
+
 
 const template2 = <h1>Other text</h1>;
-//setTimeout(() => React.render(template2, targetElement), 2000);
+//setTimeout(() => render(template2), 2000);
 
 
-// let do something with statefull
+// let do something with statefull elements
 let input1 = (
   <div>
     <input key="name"/>
@@ -89,8 +94,13 @@ let input2 = (
     second
   </div>
 );
- //React.render(input1, targetElement);
- //setTimeout(() => React.render(input2, targetElement), 2000);
+// render(input1);
+// setTimeout(() => render(input2), 2000);
+
+
+
+
+
 
 
 // REUSABLE COMPONENTS
@@ -110,15 +120,45 @@ let input2 = (
 // 1. we can specify properties
 // 2. we can specify what is inside components
 
-// Simplest custom component in react just
-// render something
+
+
+
+
+
+// Simplest custom component in react is just
+// a function
+function SimpleFunctionComponent() {
+  return <div>Some text inside function component</div>;
+}
+// or one liner with es6 functions
+const SimpleES6Component = () => <div>One liner</div>
+//render(<SimpleFunctionComponent />);
+//render(<SimpleES6Component />);
+
+
+
+
+
+
+
+
+// Second option is class with
+// render function
 class SimpleComponent extends React.Component {
   render() {
-    return <div>Some text inside component</div>;
+    return <div>Some text inside class component</div>;
   }
 }
-//React.render(<SimpleComponent />, targetElement);
+//render(<SimpleComponent />);
 
+
+
+// PROPERTIES TO COMOPONENETS
+
+
+const SimpleFunctionComponentWithProps =
+  ({text}) => <div>{text}</div>;
+//render(<SimpleFunctionComponentWithProps text="Hello here" />);
 
 class SimpleComponentWithProps extends React.Component {
   render() {
@@ -126,29 +166,24 @@ class SimpleComponentWithProps extends React.Component {
     return <div>{text}</div>;
   }
 }
-// React.render(
-<SimpleComponentWithProps text="anything1">
-  <div>What will happend with child?</div>
-</SimpleComponentWithProps>
-//, targetElement);
+// render(
+// <SimpleComponentWithProps text="anything">
+//   <div>What will happend with child?</div>
+// </SimpleComponentWithProps>
+//);
 
 
-class SimpleComponentWithChildren extends React.Component {
-  render() {
-    let text = this.props.text;
-    return (
+const SimpleComponentWithChildren =
+  ({text, children}) =>
       <div>
         <h1>{text}</h1>
-        {this.props.children}
-      </div>
-    );
-  }
-}
-// React.render(
-<SimpleComponentWithChildren text="nejaky text">
-  <p> This text will be inside </p>
-</SimpleComponentWithChildren>
-// , targetElement);
+        {children}
+      </div>;
+// render(
+//   <SimpleComponentWithChildren text="nejaky text">
+//     <p> This text will be inside </p>
+//   </SimpleComponentWithChildren>
+// );
 
 
 
@@ -178,9 +213,9 @@ class SimpleComponentWithState extends React.Component {
     );
   }
 }
-// React.render(
-<SimpleComponentWithState />
-// , targetElement);
+// render(
+//   <SimpleComponentWithState />
+// );
 
 
 
@@ -210,9 +245,9 @@ class ReadingValuseFromDom extends React.Component {
     );
   }
 }
-// React.render(
-<ReadingValuseFromDom />
-// , targetElement);
+// render(
+//   <ReadingValuseFromDom />
+// );
 
 
 // detailed description http://busypeoples.github.io/post/react-component-lifecycle/
@@ -248,6 +283,6 @@ class LifecycleComponent extends React.Component {
     return <div> LifecycleComponent </div>;
   }
 }
-// React.render(
+// render(
 <LifecycleComponent />
-// , targetElement);
+//);
