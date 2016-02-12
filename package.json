@@ -13,7 +13,7 @@
     "redux-thunk": "^1.0.3"
   },
   "devDependencies": {
-    "redux-devtools": "^2.1.0"
+    "typescript": "^1.9.0-dev.20160212"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
