@@ -6,9 +6,7 @@ import {startNewGame, turnCard} from './actions';
 import {Game} from './Game';
 
 
-@connect(
-  state => ({...(state)})
-)
+@connect(state => state)
 export class App extends Component {
   render() {
     return (

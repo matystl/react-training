@@ -1,5 +1,5 @@
-import React, {Component, findDOMNode} from 'react';
-import {Link} from 'react-router';
+import React, {Component} from 'react';
+import {findDOMNode} from 'react-dom';
 
 export class Home extends  Component {
   state = {
@@ -7,12 +7,12 @@ export class Home extends  Component {
     todos: [],
   };
 
-  handleUpdate() {
-    this.setState({...this.state, counter: this.state.counter +1});
+  increase() {
+    this.setState({counter: this.state.counter + 1});
   }
 
   decrease() {
-    this.setState({...this.state, counter: this.state.counter -1});
+    this.setState({counter: this.state.counter - 1});
   }
 
   addItem() {
@@ -29,13 +29,13 @@ export class Home extends  Component {
         <hr />
         <div>{this.state.counter}</div>
         <button onClick={::this.decrease}>-1</button>
-        <button onClick={::this.handleUpdate}>+1</button>
+        <button onClick={::this.increase}>+1</button>
         <hr />
         <div><input ref="test"/></div>
         <div><button onClick={::this.addItem}>Add item</button></div>
         <ul>
-          {this.state.todos.map((item) =>
-            <li>{item}</li>)
+          {this.state.todos.map((item, i) =>
+            <li key={i}>{item}</li>)
           }
         </ul>
 

@@ -1,0 +1,27 @@
+<head>
+  <script src="https://npmcdn.com/react@0.14.7/dist/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js" charset="utf-8"></script>
+</head>
+<body>
+  <div id="app-content">
+  <div>
+  <script type="text/babel">
+    React.render(
+      <div id="text">
+        <b>Hello, world!</b> I am a text inside div without React.
+      </div>
+      ,
+      document.getElementById('app-content')
+    );
+  </script>
+  <!--<script type="text/babel">
+    const whatToRender = React.createElement('div', {}, [
+        React.createElement('b', {}, "Hello, world!"),
+        " I am a text inside div.",
+    ]);
+    const whereToRender = document.getElementById('app-content');
+    React.render(whatToRender, whereToRender);
+  </script>-->
+</body>
+
+

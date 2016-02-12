@@ -1,0 +1,25 @@
+<head>
+  <script src="https://npmcdn.com/react@0.14.7/dist/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js" charset="utf-8"></script>
+<head>
+<body>
+  <div id="content" >
+    nothing is rendered here
+    open console and call renderFirst() or renderSecond()
+  </div>
+
+  <script type="text/babel">
+    const MyFirstComponent = () => <div>First component with some text</div>;
+
+    const MySecondComponent = () =>
+      <div>
+        Hi i am second component with first component as child
+        <MyFirstComponent />
+      </div>;
+
+    const content = document.getElementById('content');
+
+    window.renderFirst = () => React.render(<MyFirstComponent/>, content);
+    window.renderSecond = () => React.render(<MySecondComponent/>, content);
+  </script>
+</body>

@@ -86,7 +86,7 @@ let temp = createElement("div", {class: "Test"}, [
 
 let temp1 = <span>Ahoj</span>;
 let temp2 = (
-  <div class="Test">
+  <div className="Test">
     <a href="vacuumlabs.com">
       Link to something
     </a>
@@ -127,7 +127,7 @@ let temp = (
 //Templating - JSX - loops
 
 let temp = (
- <div class="Test">
+ <div className="Test">
    <a href="vacuumlabs.com">
      {[1, 2, 3].map((i) =>
        <span>{i}</span>

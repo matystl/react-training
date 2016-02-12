@@ -10,7 +10,6 @@ function flatMap(array, func) {
 }
 
 function shuffle(array){
-  //array,placeholder,placeholder,placeholder
   var res = [...array];
   //http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
   function fy(a,b,c,d){//array,placeholder,placeholder,placeholder
