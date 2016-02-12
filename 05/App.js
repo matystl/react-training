@@ -39,7 +39,7 @@ export class App extends Component {
       <div>
         <h1>Pexeso game </h1>
         <button onClick={::this.startNewGame}>New game</button>
-        Correct turned: {this.state.done.size / 2}
+        Correct turned: {this.state.done.length / 2}
         <div>
         {!this.state.game
           ?"No game started"

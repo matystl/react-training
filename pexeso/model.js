@@ -42,7 +42,7 @@ const initialState = {
     turns: 0,
 }
 
-export function pexeso(state = initialState, {type, cardId: id}) {
+export function pexesoReducer(state = initialState, {type, cardId: id}) {
   switch (type) {
     case NEW_GAME:
       return {

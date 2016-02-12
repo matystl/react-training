@@ -74,7 +74,9 @@ function incCounter() {
 
 import { createStore  } from 'redux';
 
-const simpleStore = createStore(counterReducer);
+//const simpleStore = createStore(counterReducer);
+// Enable devtools
+const simpleStore = ((window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore))(counterReducer)
 // Let's put this instance to window so we can use it from console
 window.store = simpleStore;
 
@@ -133,9 +135,10 @@ simpleStore.dispatch(incCounter());
 // https://github.com/insin/react-heatpack
 // So first small demo how to render something
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 const appDiv = document.querySelector('#app');
-React.render(<div>Simple text</div>, appDiv);
+ReactDOM.render(<div>Simple text</div>, appDiv);
 
 // Let's create simple component
 // that will get counter and dispatch in props
@@ -175,7 +178,7 @@ import { connect } from 'react-redux';
 
 let AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);
 
-// if you want, you can use decorators from es7
+// if you want, you can use decorators from es7+
 // @connect(mapStateToProps, mapDispatchToProps)
 // export class App extends React.Component {
 // ...
@@ -187,11 +190,9 @@ let AppWithRedux = connect(mapStateToProps, mapDispatchToProps)(App);
 // that way whole render tree will share same instace of store
 import { Provider } from 'react-redux';
 
-// React.render(
-//   <Provider store={simpleStore}>
-//     {() => <AppWithRedux />}
-//   </Provider>,
-//   appDiv
-// );
-// note: children of provider is function and it's temporary hack
-// until react 0.14 will be released
+ReactDOM.render(
+  <Provider store={simpleStore}>
+    <AppWithRedux />
+  </Provider>,
+  appDiv
+);

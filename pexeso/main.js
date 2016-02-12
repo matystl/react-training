@@ -1,30 +1,15 @@
 import React from 'react';
 import { createStore, composeReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { devTools, persistState } from 'redux-devtools';
-import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
 import {App} from './App';
-import {pexeso} from './model';
+import {pexesoReducer} from './model';
 
-const finalCreateStore = compose(
-  devTools()
-)(createStore);
-let store = finalCreateStore(pexeso);
-
-// let store = createStore(pexeso);
+let store = createStore(pexesoReducer, undefined,  (window.devToolsExtension ? window.devToolsExtension() : f => f));
 
 React.render(
-  <div>
-    <Provider store={store}>
-      {() => <App />}
-    </Provider>
-
-    <DebugPanel top right bottom>
-      <DevTools store={store}
-              monitor={LogMonitor} />
-    </DebugPanel>
-
-  </div>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.querySelector('#app')
 );
