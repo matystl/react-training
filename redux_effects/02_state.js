@@ -37,7 +37,7 @@ class Counter extends React.Component {
 }
 
 // create smart component
-@connect(
+const App = @connect(
   (state) => ({counter: state}),
   (dispatch) => ({inc: () => dispatch(inc())})
 ) //from dump component
@@ -49,9 +49,9 @@ class App extends React.Component {
 
 // render our component
 React.render(
-  <Provider store={store}>{() =>
+  <Provider store={store}>
     <App />
-  }</Provider>,
+  </Provider>,
   document.querySelector('#app')
 );
 
@@ -196,7 +196,7 @@ function renderNewReducer(reducer, component) {
   let store = createStore(reducer)
   React.unmountComponentAtNode(document.querySelector('#app'));
   React.render(
-    <Provider store={store}>{() =>
+    <Provider store={store}>{
       React.createElement(component)
     }</Provider>,
     document.querySelector('#app')
