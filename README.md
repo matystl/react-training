@@ -4,6 +4,7 @@
 Most important folders are presentaion and redux_effects
 
 After cloning run `npm install`
+Instal heatpack globaly `npm install -g react-heatpack`
 To run examples type
  - `heatpack presentation/03_react.js`
  - `heatpack redux_effects/01_start.js`
